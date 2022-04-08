@@ -1,6 +1,8 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:hulul/screens/HomePage.dart';
+
+
+import 'package:hululapp/screens/login_signin_screen/login_screen.dart';
 
 void main() => runApp(const Hulul());
 
@@ -20,7 +22,7 @@ class Hulul extends StatelessWidget {
           ),
         ),
         duration: 2000,
-        nextScreen: HomeScreen(),
+        nextScreen: SignIn(),
         splashTransition: SplashTransition.fadeTransition,
         //pageTransitionType: PageTransitionType.scale,
       ),
