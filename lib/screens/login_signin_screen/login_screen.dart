@@ -30,7 +30,7 @@ class SignIn extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   child: const Text(
                     'Login',
-                    style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 30,color: Colors.white,fontWeight: FontWeight.bold),
                   )),
 
               Container(
@@ -42,7 +42,7 @@ class SignIn extends StatelessWidget {
                   decoration: const InputDecoration(
 
                     prefixIcon: Icon(Icons.email,color: Colors.white60,),
-                    border: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(borderSide: BorderSide(color:  Colors.white60,width: 3)),
 
                     labelText: ' Your Email',
 
@@ -61,9 +61,7 @@ class SignIn extends StatelessWidget {
                   decoration: const InputDecoration(
                     //  enabledBorder: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.lock,color: Colors.white60,),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white60)
-                    ),
+                    focusedBorder: OutlineInputBorder(borderSide: BorderSide(color:  Colors.white60,width: 3)),
 
                     labelText: 'Your Password',
 
