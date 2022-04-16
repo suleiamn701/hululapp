@@ -1,288 +1,285 @@
 import 'dart:ffi';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+import 'login_signin_screen/login_screen.dart';
+import 'login_signin_screen/register_screen.dart';
 
+class HomeScreen extends StatefulWidget {
+ // const HomeScreen({Key? key}) : super(key: key);
+   dynamic snapshot;
+   HomeScreen(this.snapshot);
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  void _moveNextPage(){}
+   _moveNextPage(int npage){
+     if(npage == 1){
+       // Navigator.push(context,
+       //     MaterialPageRoute(builder: (context) => Register())); // go to report page
+     }
+     else if(npage ==2){
+       // Navigator.push(context,
+       //     MaterialPageRoute(builder: (context) => Register())); // go to sercies page
+     }
+     else if(npage == 3){
+       // Navigator.push(context,
+       //     MaterialPageRoute(builder: (context) => Register())); // go to community page
+     }
+     else{
+       // Navigator.push(context,
+       //     MaterialPageRoute(builder: (context) => Register())); // go to about us page
+     }
+
+  }
 
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
+// appBar: AppBar(),
 
 
-drawer: Drawer(),
-      //appBar: AppBar(),
+drawer:  Drawer(
+elevation: 5,
 
-      body: Stack(
-       // fit: StackFit.loose,
+  child: Center(
+
+    child: Column(
+      //mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        if(widget.snapshot != null)
+      Container(
+        margin: EdgeInsets.only(top: 40),
+        child:Column(
+          children: [
+            CircleAvatar(
+
+              backgroundImage: NetworkImage(widget.snapshot.data!.photoURL.toString()),
+            ),
+            SizedBox(height: 15,),
+            Text(widget.snapshot.data!.displayName.toString())
+          ],
+        )
+      ),
+        SizedBox(height: 15,),
+
+        ElevatedButton(
+            onPressed: (){
+              FirebaseAuth.instance.signOut().then((value) =>
+                  Navigator.pop(context,
+                      MaterialPageRoute(builder: (context) => SignIn()))
+              );
+            },
+            child: Text("logout"))
+
+
+      ],
+    ),
+  ),
+),
+
+
+      body:  Stack(
+         fit: StackFit.loose,
         alignment: Alignment.bottomCenter,
 
         children: <Widget>[
 
-        SvgPicture.asset( "assets/images/home1.svg",
-          alignment: Alignment.center,
-          fit: BoxFit.cover,),
+          SvgPicture.asset( "assets/images/home1.svg",
+            alignment: Alignment.center,
+            fit: BoxFit.cover,),
           // width: MediaQuery.of(context).size.width,
           // height: MediaQuery.of(context).size.height,),
 
-         Container(
-        //   margin: EdgeInsets.only(top: 30),
-           height: 500,
-           margin: EdgeInsets.only(bottom: 7),
-           child:  InkWell(
-             onTap: _moveNextPage,
+          Container(
+            //   margin: EdgeInsets.only(top: 30),
+              height: 500,
+              margin: EdgeInsets.only(bottom: 7),
 
-               child: GridView(
+              child: GridView(
 
-                 children: [
+                children: [
 
-                   // Container(
-                   //
-                   //   margin: EdgeInsets.only(left: 7),
-                   //  decoration: BoxDecoration(
-                   //      gradient: LinearGradient(
-                   //        colors: [
-                   //          Colors.red,
-                   //          Colors.red.withOpacity(0.5),
-                   //
-                   //        ],
-                   //      ),
-                   //    color: Colors.green,
-                   //    borderRadius: BorderRadius.circular(20)
-                   //  ),
-                   //
-                   //   child: Column(
-                   //     mainAxisAlignment: MainAxisAlignment.center,
-                   //     children: [
-                   //     Icon(Icons.report,size: 70,),
-                   //     Text("Report",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
-                   //   ],)
-                   // ),
-                   //
-                   // Container(
-                   //   margin: EdgeInsets.only(right: 7),
-                   //   decoration: BoxDecoration(
-                   //       gradient: LinearGradient(
-                   //         colors: [
-                   //
-                   //           Colors.amberAccent.withOpacity(0.5),
-                   //           Colors.amberAccent,
-                   //         ],
-                   //       ),
-                   //       //color: Colors.amberAccent,
-                   //       borderRadius: BorderRadius.circular(20)
-                   //   ),
-                   //
-                   //   child:Column(
-                   //     mainAxisAlignment: MainAxisAlignment.center,
-                   //     children: [
-                   //       Icon(Icons.miscellaneous_services_sharp,size: 70,),
-                   //       Text("Services",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
-                   //     ],)// Icon(Icons.miscellaneous_services_sharp,size: 70,)
-                   // ),
-                   //
-                   // Container(
-                   //   margin: EdgeInsets.only(left: 7),
-                   //   decoration: BoxDecoration(
-                   //       gradient: LinearGradient(
-                   //         colors: [
-                   //           Colors.teal,
-                   //           Colors.teal.withOpacity(0.5),
-                   //
-                   //         ],
-                   //       ),
-                   //       // color: Colors.teal,
-                   //       borderRadius: BorderRadius.circular(20)
-                   //   ),
-                   //
-                   //   child: Column(
-                   //     mainAxisAlignment: MainAxisAlignment.center,
-                   //     children: [
-                   //       Icon(Icons.comment_outlined,size: 70,),
-                   //       Text("Community",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
-                   //     ],)//Icon(Icons.comment_outlined,size: 70,),
-                   // ),
-                   //
-                   // Container(
-                   //   margin: EdgeInsets.only(right: 7),
-                   //   decoration: BoxDecoration(
-                   //       gradient: LinearGradient(
-                   //         colors: [
-                   //
-                   //           Colors.brown.withOpacity(0.5),
-                   //           Colors.brown,
-                   //         ],
-                   //       ),
-                   //       // color: Colors.brown,
-                   //       borderRadius: BorderRadius.circular(20)
-                   //   ),
-                   //
-                   //   child: Column(
-                   //     mainAxisAlignment: MainAxisAlignment.center,
-                   //     children: [
-                   //       Icon(Icons.account_balance_wallet_outlined,size: 70,),
-                   //       Text("About us",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
-                   //     ],)//Icon(Icons.account_balance_wallet_outlined ,size: 70,),
-                   // ),
+                  InkWell(
+                    onTap: _moveNextPage(1), // 1 means go to report page
 
+                    child: Container(
+                      margin: EdgeInsets.only(left: 4),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Stack(
+                            children: [
+                              Image.asset(
+                                "assets/images/report-image.jpg",
+                                fit: BoxFit.cover,
+                                height: 250,
+                                width: double.infinity,
+                              ),
 
-                   Container(
-                     margin: EdgeInsets.only(left: 4),
-                     child: ClipRRect(
-                       borderRadius: BorderRadius.circular(20),
-                       child: Stack(
-                         children: [
-                           Image.asset(
-                             "assets/images/report-image.jpg",
-                             fit: BoxFit.cover,
-                             height: 250,
-                             width: double.infinity,
-                           ),
+                              Positioned(child: Container(
+                                height: 70,
+                                width: double.infinity,
+                                color: Colors.black45,
+                                alignment: Alignment.center,
+                                child: Text(
 
-                          Positioned(child: Container(
-                            height: 70,
-                           width: double.infinity,
-                            color: Colors.black45,
-                            alignment: Alignment.center,
-                            child: Text(
+                                  "Report",
+                                  style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold),
+                                ),
 
-                              "Report",
-                              style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold),
-                            ),
+                              ),
 
-                          ),
-                            bottom: 0,
+                                left:0, //set left 0, to start without margin at left
+                                right:0,
+                                bottom: 0,
+
+                              )
+
+                            ],
                           )
+                      ),
 
-                         ],
-                       )
-                     ),
-                   ),
+                    ),
+                  ),
 
 
-                   Container(
-                     margin: EdgeInsets.only(right: 4),
-                     child: ClipRRect(
-                       borderRadius: BorderRadius.circular(20),
-                       child: Stack(
-                         children: [
-                           Image.asset(
-                             "assets/images/services1.jpg",
-                             fit: BoxFit.cover,
-                             height: 250,
-                             width: double.infinity,
-                           ),
+                  InkWell(
+                    onTap: _moveNextPage(2) , // 2 means go to servies page
+                    child:  Container(
+                      margin: EdgeInsets.only(right: 4),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Stack(
+                            children: [
+                              Image.asset(
+                                "assets/images/services1.jpg",
+                                fit: BoxFit.cover,
+                                height: 250,
+                                width: double.infinity,
+                              ),
 
-                         Positioned(child: Container(
-                           height: 70,
-                          width: double.infinity,
-                           color: Colors.black45,
-                           alignment: Alignment.center,
-                           child: Text(
+                              Positioned(child: Container(
+                                height: 70,
+                                width: double.infinity,
+                                color: Colors.black45,
+                                alignment: Alignment.center,
+                                child: Text(
 
-                             "Services",
-                             style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold),
-                           ),
-                         ),
-                         bottom: 0,)
+                                  "Services",
+                                  style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                                left:0, //set left 0, to start without margin at left
+                                right:0,
+                                bottom: 0,)
 
-                         ],
-                       )
-                     ),
-                   ),
+                            ],
+                          )
+                      ),
+                    ),
+                  ),
 
-                   Container(
-                     margin: EdgeInsets.only(left: 4),
-                     child: ClipRRect(
-                       borderRadius: BorderRadius.circular(20),
-                       child: Stack(
-                         children: [
-                           Image.asset(
-                             "assets/images/community.jpg",
-                             fit: BoxFit.cover,
-                             height: 250,
-                             width: double.infinity,
-                           ),
+                  InkWell(
+                    onTap: _moveNextPage(3), // 3 means go to community page
+                    child:  Container(
+                      margin: EdgeInsets.only(left: 4),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Stack(
+                            children: [
+                              Image.asset(
+                                "assets/images/community.jpg",
+                                fit: BoxFit.cover,
+                                height: 250,
+                                width: double.infinity,
+                              ),
 
-                          Positioned(child: Container(
-                            height: 70,
-                            width: double.infinity,
-                            color: Colors.black45,
-                            alignment: Alignment.center,
-                            child: Text(
+                              Positioned(child: Container(
+                                height: 70,
+                                width: double.infinity,
+                                color: Colors.black45,
+                                alignment: Alignment.center,
+                                child: Text(
 
-                              "Community",
-                              style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold),
+                                  "Community",
+                                  style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                                left:0, //set left 0, to start without margin at left
+                                right:0,
+                                bottom: 0,)
+
+                            ],
+                          )
+                      ),
+                    ),
+                  ),
+
+                  InkWell(
+                    onTap: _moveNextPage(4), // 4 means go to about us page
+                    child:  Container(
+                      margin: EdgeInsets.only(right: 4),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Stack(
+                          children: [
+                            Image.asset(
+                              "assets/images/about.jpg",
+                              fit: BoxFit.cover,
+                              height: 250,
+                              width: double.infinity,
                             ),
-                          ),
-                          bottom: 0,)
 
-                         ],
-                       )
-                     ),
-                   ),
+                            Positioned(child: Container(
+                              height: 70,
+                              width: double.infinity,
+                              color: Colors.black45,
+                              alignment: Alignment.center,
+                              child: Text(
+                                "About us",
+                                style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                              left:0, //set left 0, to start without margin at left
+                              right:0,
+                              bottom: 0,)
 
-                   Container(
-                     margin: EdgeInsets.only(right: 4),
-                     child: ClipRRect(
-                       borderRadius: BorderRadius.circular(20),
-                       child: Stack(
-                         children: [
-                           Image.asset(
-                             "assets/images/about.jpg",
-                             fit: BoxFit.cover,
-                             height: 250,
-                             width: double.infinity,
-                           ),
-
-                         Positioned(child: Container(
-                           height: 70,
-                           width: double.infinity,
-                           color: Colors.black45,
-                           alignment: Alignment.center,
-                           child: Text(
-                             "About us",
-                             style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold),
-                           ),
-                         ),
-                         bottom: 0,)
-
-                         ],
-                       ),
-                     ),
-                   ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
 
 
 
-                 ],
+                ],
 
-                 gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
 
-                   childAspectRatio: 3.5 / 4,
-                   crossAxisSpacing: 20,
-                   mainAxisSpacing: 10,
-                   maxCrossAxisExtent: 200,
+                  childAspectRatio: 3.5 / 4,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 10,
+                  maxCrossAxisExtent: 200,
 
-                 ),
-               )
-           ),
-         )
+                ),
+              )
+
+          ),
+
         ],
 
-        ),
+      ),
       );
 
 

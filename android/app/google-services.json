@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "898969186470",
+    "project_id": "hulul-ed1ec",
+    "storage_bucket": "hulul-ed1ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898969186470:android:925f73eea0e25c1f7bc467",
+        "android_client_info": {
+          "package_name": "mtahat.com.hululapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898969186470-v30r9dopmgktmenpoku9o32mfugsjdbv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mtahat.com.hululapp",
+            "certificate_hash": "6f70dc80c9773f011b2bd299a8086b720c3b9bce"
+          }
+        },
+        {
+          "client_id": "898969186470-bf8fuc0g0j79p8pbr06k5qedimhljpbs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXB5w-iweGFo65rCAdmJ2PNv8bcLc75pg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898969186470-bf8fuc0g0j79p8pbr06k5qedimhljpbs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

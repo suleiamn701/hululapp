@@ -1,9 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class Register  extends StatelessWidget {
+import 'login_screen.dart';
+
+class  Register extends StatelessWidget {
   //const ({Key? key}) : super(key: key);
-  TextEditingController fname = TextEditingController();
-  TextEditingController lname = TextEditingController();
+  TextEditingController username = TextEditingController();
+  TextEditingController fullname = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
@@ -43,14 +48,14 @@ class Register  extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: TextField(
 
-              controller: fname,
+              controller: username,
               keyboardType: TextInputType.name,
               decoration: const InputDecoration(
 
                 prefixIcon: Icon(Icons.person,color: Colors.white60,),
                 focusedBorder: OutlineInputBorder(borderSide: BorderSide(color:  Colors.white60,width: 3)),
 
-                labelText: ' First Name',
+                labelText: ' Username',
                   labelStyle: TextStyle(
                     color:  Colors.white60,
                   )
@@ -66,14 +71,14 @@ class Register  extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: TextField(
 
-              controller: lname,
+              controller: fullname,
               keyboardType: TextInputType.name,
               decoration: const InputDecoration(
 
                 prefixIcon: Icon(Icons.person,color: Colors.white60,),
                 focusedBorder: OutlineInputBorder(borderSide: BorderSide(color:  Colors.white60,width: 3)),
 
-                labelText: ' Last Name',
+                labelText: ' full Name',
 
                   labelStyle: TextStyle(
                     color:  Colors.white60,
@@ -113,7 +118,7 @@ class Register  extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: TextField(
 
-              controller: email,
+              controller: password,
               keyboardType: TextInputType.visiblePassword,
               decoration: const InputDecoration(
 
@@ -139,12 +144,41 @@ class Register  extends StatelessWidget {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     primary: Colors.green,
-
-
                 ),
 
                 child: const Text('Register'),
-                onPressed: () {
+                onPressed: () async{
+
+           try{
+             var authresults = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                 email: email.text.trim(), password: password.text.trim());
+             FirebaseFirestore.instance
+                 .collection('users')
+                 .doc(authresults.user?.uid)
+                 .set({
+               'username': username.text.trim(),
+               'fullname': fullname.text.trim(),
+               'email': email.text.trim(),
+             }).then((value) =>
+                 Navigator.push(context,
+                     MaterialPageRoute(builder: (context) => SignIn()))
+             );
+           } on PlatformException catch (err) {
+             var message = 'An error occurred, Please check your credentionals';
+             if (err.message != null) {
+               message = err.message!;
+             }
+             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+               content: Text(message,style: TextStyle(color: Colors.white),),
+               backgroundColor: Colors.green,
+               behavior: SnackBarBehavior.floating,
+               action: SnackBarAction(label: 'Dismiss',onPressed: (){},textColor: Colors.white,),
+             ));
+
+           }
+           catch (err) {
+             print(err);
+           }
 
                 },
               )

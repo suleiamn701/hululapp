@@ -36,6 +36,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   animated_splash_screen: ^1.2.0
   flutter_svg: ^1.0.3
+  cloud_firestore: ^3.1.9
+  firebase_core: ^1.12.0
+  firebase_auth: ^3.3.8
+  google_sign_in: ^5.3.0
+  flutter_spinkit: ^5.1.0
+
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +73,7 @@ flutter:
      - assets/images/services1.jpg
      - assets/images/community.jpg
      - assets/images/about.jpg
+     - assets/images/google2.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
