@@ -7,17 +7,27 @@ import 'package:hululapp/screens/HomePage.dart';
 import 'package:hululapp/screens/login_signin_screen/login_screen.dart';
 import 'package:hululapp/screens/login_signin_screen/register_screen.dart';
 
+import '../models/profile_model/Snap.dart';
+import '../screens/DrawerScreen.dart';
+import '../screens/HomePage2.dart';
+
+var PROFILEIMAGE ;
+var NAME;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await await Firebase.initializeApp();
-  runApp(const Hulul());
+  runApp(Hulul());
 }
 
-class Hulul extends StatelessWidget {
-  const Hulul({Key? key}) : super(key: key);
+class  Hulul extends StatelessWidget {
+  //const Hulul({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
+    // return MaterialApp(
+    //   home: HomePage2(),
+    // );
     return MaterialApp(
         home: AnimatedSplashScreen(
       splash: Center(
@@ -35,7 +45,10 @@ class Hulul extends StatelessWidget {
         builder: (ctx, AsyncSnapshot snapshot) {
 
           if (snapshot.hasData) {
-            return HomeScreen(snapshot);
+            PROFILEIMAGE =   NetworkImage(snapshot.data!.photoURL.toString());
+            NAME = snapshot.data!.displayName.toString();
+
+            return HomePage2(PROFILEIMAGE,NAME);
           }
           return SignIn();
         },

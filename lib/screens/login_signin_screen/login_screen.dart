@@ -28,6 +28,7 @@ class _SignInState extends State<SignIn> {
       resizeToAvoidBottomInset: false,
       body: Center(
         child: Container(
+
           constraints: BoxConstraints.expand(),
           decoration: const BoxDecoration(
             image: DecorationImage(

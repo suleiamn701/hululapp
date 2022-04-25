@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
           prefixIcon: Icon(Icons.person,color: Colors.white60,),
           focusedBorder: OutlineInputBorder(borderSide: BorderSide(color:  Colors.white60,width: 3)),
 
-          labelText: s,
+          labelText: "",
           labelStyle: TextStyle(
             color:  Colors.white60,
           )
@@ -22,6 +22,6 @@ import 'package:flutter/material.dart';
       ),
 
     ),
-  )
+  );
 
 }

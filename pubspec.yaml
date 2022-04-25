@@ -74,8 +74,12 @@ flutter:
      - assets/images/community.jpg
      - assets/images/about.jpg
      - assets/images/google2.jpg
+     - assets/images/download.jpeg
+     - assets/images/Infreastructureservices.png
+     - assets/images/parking-problem.jpg
+     - assets/images/SQUCT.jpg
 
-  # An image asset can refer to one or more resolution-specific "variants", see
+       # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
   # For details regarding adding assets from package dependencies, see
