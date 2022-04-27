@@ -22,7 +22,7 @@ class _ComunityScreenState extends State<ComunityScreen> {
         appBar: AppBar(
           centerTitle: true,
           title: Text("COMMUNITY"),
-          backgroundColor:  Colors.brown,
+          backgroundColor: Colors.brown,
         ),
         body: Container(
           child: ListView(
@@ -36,6 +36,7 @@ class _ComunityScreenState extends State<ComunityScreen> {
               Post(),
             ],
           ),
+
           decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/images/backg.png"),
@@ -43,7 +44,15 @@ class _ComunityScreenState extends State<ComunityScreen> {
           ),
 
           // ChatInputField()
-        ));
+        ),
+        floatingActionButton: FloatingActionButton(
+            // isExtended: true,
+            child: Icon(Icons.add),
+            backgroundColor: Colors.green,
+            onPressed: () {
+              // Navigator.push(
+              //     context, MaterialPageRoute(builder: (context) => NewPost()));
+            }));
   }
 }
 // AnimatedContainer(
