@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../services_screen/textRecogintion.dart';
 import 'report.dart';
 
 class Report_item extends StatelessWidget {
@@ -8,12 +9,18 @@ class Report_item extends StatelessWidget {
   final AssetImage image;
   const Report_item(this.id, this.title, this.image);
   void navigate(context) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Report(title,id)));
+    if(id == 'r2'){
+      Navigator.push(context, MaterialPageRoute(builder: (context) => TextRecognition()));
+    }else{
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Report(title,id)));
+    }
+
   }
 
   @override
   Widget build(BuildContext context) {
     return
+
       InkWell(
         child: Container(
           height: 150,
@@ -39,9 +46,9 @@ class Report_item extends StatelessWidget {
                         child: Text(
                           "$title",
                           style: TextStyle(
-                              color: Colors.white,
-                              fontSize:15,
-                              fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize:15,
+                            fontWeight: FontWeight.bold,
                           ),textAlign: TextAlign.center,
                         ),
                       ),
@@ -57,6 +64,8 @@ class Report_item extends StatelessWidget {
         ),
         onTap: () => navigate(context),
       );
+
+
     //   InkWell(
     //   onTap: () => navigate(context),
     //   borderRadius: BorderRadius.circular(20),
