@@ -7,7 +7,6 @@ import 'package:hululapp/screens/report_screen/report_screen.dart';
 import 'package:hululapp/screens/services_screen/Service_screen.dart';
 
 import 'DrawerScreen.dart';
-import 'comunity_screen/Comunity.dart';
 
 class HomePage2 extends StatefulWidget {
   // const HomePage2({Key? key}) : super(key: key);
@@ -300,7 +299,7 @@ class _HomePage2State extends State<HomePage2> {
   }
   void NavigateToCommunityPage() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Community()));
+        context, MaterialPageRoute(builder: (context) => ComunityScreen()));
   }
 
   void NavigateToAboutUsPage() {

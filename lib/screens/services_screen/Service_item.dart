@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hululapp/screens/services_screen/qr_screen.dart';
+import 'Bus_screen.dart';
 import 'service.dart';
 
 class Service_item extends StatelessWidget {
@@ -12,6 +13,9 @@ class Service_item extends StatelessWidget {
     if(id == 's2'){
     Navigator.push(context, MaterialPageRoute(builder: (context) => QR(title,id)));
   }
+    else if(id =='s3'){
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Buses(title,id)));
+    }
 
 
 }

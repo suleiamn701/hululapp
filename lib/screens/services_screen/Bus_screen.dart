@@ -5,16 +5,18 @@ import '../../widgets/services_widget/bus.dart';
 
 
 class Buses extends StatelessWidget {
-  const Buses({Key? key}) : super(key: key);
+  const Buses(String title,String id, {Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return
+       Scaffold(
         appBar: AppBar(
           titleTextStyle: TextStyle(),
           title: Text("BUS TRACKER"),
+          centerTitle: true,
+          backgroundColor: Colors.brown,
         ),
         body: Stack(
           children: [
@@ -26,19 +28,25 @@ class Buses extends StatelessWidget {
               //         ),
               //           margin: EdgeInsets.only(top: 30),
             ),
-            Column(
-              children: [
-                bus(),
-                bus(),
-                bus(),
-                bus(),
-                bus(),
-                bus(),
-              ],
+            SingleChildScrollView(
+
+              child:     Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+
+                  bus(),
+                  bus(),
+                  bus(),
+                  bus(),
+                  bus(),
+                  bus(),
+                ],
+              ),
             )
+
           ],
         ),
-      ),
-    );
+      );
+
   }
 }
