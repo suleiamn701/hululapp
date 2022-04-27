@@ -29,6 +29,7 @@ class  Hulul extends StatelessWidget {
     //   home: HomePage2(),
     // );
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
         home: AnimatedSplashScreen(
       splash: Center(
         child: Container(

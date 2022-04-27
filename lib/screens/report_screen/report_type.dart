@@ -17,5 +17,10 @@ const Report_type = const [
     title: "Report the loss of your belongings",
     image: AssetImage('assets/images/download.jpeg'),
   ),
+  Category(
+    id: 'r4',
+    title: "Report using QR",
+    image: AssetImage('assets/images/qr2.jfif'),
+  ),
 
 ];

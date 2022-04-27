@@ -7,7 +7,7 @@ import '../Loction.dart';
 import '../imagePicker.dart';
 import 'package:path/path.dart';
 class Report extends StatelessWidget {
-  final String report = 'Report';
+  final String report = 'Service';
   var categoryTitle = '';
   var categoryId = '';
   Report(this.categoryTitle, this.categoryId);

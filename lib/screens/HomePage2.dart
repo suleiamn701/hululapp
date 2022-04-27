@@ -4,8 +4,10 @@ import 'package:hululapp/screens/about_screen/AboutUs.dart';
 import 'package:hululapp/screens/comunity_screen/ComunityScreen.dart';
 import 'package:hululapp/screens/profile_screen/profileScreen.dart';
 import 'package:hululapp/screens/report_screen/report_screen.dart';
+import 'package:hululapp/screens/services_screen/Service_screen.dart';
 
 import 'DrawerScreen.dart';
+import 'comunity_screen/Comunity.dart';
 
 class HomePage2 extends StatefulWidget {
   // const HomePage2({Key? key}) : super(key: key);
@@ -149,6 +151,7 @@ class _HomePage2State extends State<HomePage2> {
                             },
                           ),
                           InkWell(
+                            onTap: (){NavigateToServicePage();},
                             child: Container(
                               height: 150,
                               margin: EdgeInsets.only(right: 4),
@@ -291,10 +294,13 @@ class _HomePage2State extends State<HomePage2> {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => Report_screen()));
   }
-
+  void NavigateToServicePage() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => Service_screen()));
+  }
   void NavigateToCommunityPage() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => ComunityScreen()));
+        context, MaterialPageRoute(builder: (context) => Community()));
   }
 
   void NavigateToAboutUsPage() {

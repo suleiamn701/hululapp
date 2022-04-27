@@ -18,7 +18,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("COMMUNITY"),
+        title: Text("Profile"),
         backgroundColor: Colors.brown,
       ),
       body: Center(
