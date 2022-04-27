@@ -30,6 +30,7 @@ class Hulul extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: AnimatedSplashScreen(
+          splashTransition: SplashTransition.fadeTransition,
           splash: Center(
               child: Container(
             child: CircleAvatar(

@@ -24,7 +24,7 @@ class Report extends StatelessWidget {
 
     void upload() async{
       FirebaseDiscreption firebasedisc = FirebaseDiscreption();
-      await firebasedisc.reportDiscrption(reportTitil.toString(), discreption.toString(), isueLoction.toString());
+      await firebasedisc.reportDiscrption(reportTitil.text, discreption.text, isueLoction.text);
       FirebaseLoaction firebaseLoction = FirebaseLoaction();
       await firebaseLoction.uploadLoction(lat, long).then((value) => print('done loc'));
       FirebaseUplodingImage firebaseImage = FirebaseUplodingImage() ;

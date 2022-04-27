@@ -40,6 +40,13 @@ class Buses extends StatelessWidget {
                   bus(),
                   bus(),
                   bus(),
+                  bus(),
+                  bus(),
+                  bus(),
+                  bus(),
+                  bus(),
+                  bus(),
+                  bus(),
                 ],
               ),
             )

@@ -14,12 +14,14 @@ class bus extends StatelessWidget {
       child: Align(
         alignment: Alignment.center,
         child: Card(
+color: Colors.amberAccent,
           shape:
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
+                Icon(Icons.directions_bus),
                 Text(
                   "BusNumber  $busId",
                   style: txtStyle,
